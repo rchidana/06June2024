@@ -1,0 +1,22 @@
+variables:
+  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+
+image: maven:latest
+
+stages:
+  - package
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+package_job:
+  stage: package
+
+  script:
+    - echo "Starting maven build & package"
+    - mvn package
+  artifacts:
+    paths:
+      - "target/*.war"

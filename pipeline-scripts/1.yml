@@ -1,0 +1,7 @@
+Build Code: 
+    script:
+      - mkdir build
+      - cd build
+      - echo "Getting things ready" >> build.txt
+      - touch code.txt
+      - echo "Completed build stage successfully!!"

@@ -1,0 +1,18 @@
+stages:
+  - build
+  - delayed_start
+
+Job A:
+  image: alpine
+  stage: build
+    
+  script:
+    - echo "This job will run first!!"
+
+Job B:
+  image: alpine
+  stage: delayed_start
+  script:
+    - echo "Will start after 2 mins of completion of previous stage!!"
+  when: delayed
+  start_in: 2 mins

@@ -1,0 +1,30 @@
+variables:
+  MAVEN_OPTS: -Dmaven.repo.local=.m2/repository
+
+image: maven:latest
+
+stages:
+  - package
+  - deploy
+
+cache:
+  paths:
+    - .m2/repository
+    - target
+
+package_job:
+  stage: package
+
+  script:
+    - echo "Starting maven build & package"
+    - mvn package
+  artifacts:
+    paths:
+      - "target/*.war"
+
+deploy_job:
+  stage: deploy
+  image: alpine/curl
+  script:
+    - echo "Check if curl is present"
+    - curl --upload-file target/mvnwebapp.war "https://$TOMCAT_USER:$TOMCAT_PASSWORD@n6mstz0xolzh.share.zrok.io/manager/text/deploy?path=/gitlabdeploy&update=true"

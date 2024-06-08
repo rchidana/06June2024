@@ -1,0 +1,10 @@
+Job A:
+    image: alpine
+    
+    script:
+      - echo "Job A is running!! Not sure about the order though!!"
+Job B:
+    image: alpine
+    
+    script:
+      - echo "Job B is running!! Will this run after Job A? Or Before Job A??"

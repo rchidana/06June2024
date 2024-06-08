@@ -1,0 +1,7 @@
+Manual Job:
+    image: alpine
+    
+    script:
+      - echo "This job does not get triggered Automatically!!"
+      - echo "Some one needs to manually start this!!"
+    when: manual

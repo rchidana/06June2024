@@ -1,0 +1,4 @@
+Job Without Stage:
+    script:
+      - echo "Printing all ENVIRONMENT VARIABLES"
+      - env

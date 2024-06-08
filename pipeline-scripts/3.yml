@@ -1,0 +1,24 @@
+stages:
+  - build
+  - test
+
+
+Build Code:
+    stage: build 
+    script:
+      - mkdir build
+      - cd build
+      - echo "Getting things ready" >> build.txt
+      - touch code.txt
+      - echo "Completed build stage successfully!!"
+    artifacts:
+      paths:
+        - build/
+
+Test Code:
+    stage: test
+    script:
+      - test -f build/build.txt
+      - cd build
+      - grep "ready" build.txt
+      - echo "Tested Successfully!!"
